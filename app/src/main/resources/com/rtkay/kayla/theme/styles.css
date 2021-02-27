@@ -1,0 +1,115 @@
+/*******************
+
+    Font Weights
+
+********************/
+
+.thin-text{
+    -fx-font-family: "Inter Thin";
+}
+
+.extra-light-text{
+    -fx-font-family: "Inter Extra Light";
+}
+
+.light-text{
+    -fx-font-family: "Inter Light";
+}
+.regular-text{
+    -fx-font-family: "Inter Regular";
+}
+.medium-text{
+    -fx-font-family: "Inter Medium";
+}
+.semi-bold-text{
+    -fx-font-family: "Inter Semi Bold";
+}
+.bold-text{
+    -fx-font-family: "Inter Bold";
+}
+.extra-bold-text{
+    -fx-font-family: "Inter Extra Bold";
+}
+.black-text{
+    -fx-font-family: "Inter Black";
+}
+
+/*******************
+
+    Font Weights
+
+********************/
+.window{
+ -fx-background-image: url("../img/background.png");
+}
+
+.window-buttons{
+ -fx-background-radius: 30;
+ -fx-max-width: 17px;
+ -fx-min-width: -fx-max-width;
+ -fx-max-height: -fx-min-width;
+ -fx-min-height: -fx-min-width;
+}
+
+.close-button{
+ -fx-background-color:#FF605C;
+}
+
+.minimise-button{
+ -fx-background-color:#FF8D44;
+}
+.toolbar-icons{
+-fx-icon-size:24;
+}
+.menu-button{
+ -fx-background-color: transparent;
+}
+
+.header-pane-bg{
+  -fx-opacity:0.4;
+  -fx-background-color: linear-gradient(to bottom right, white, rgba(255,255,255,0.4));
+  -fx-border-radius: 0 0 0 80;
+  -fx-background-radius: 0 0 0 80;
+  -fx-border-color: white;
+  /* top-left, top-right, bottom-right, and bottom-left corners, in that order. */
+}
+.header-pane{
+  -fx-background-color:transparent;
+}
+
+.date{
+  -fx-fill:#3A3939;
+  -fx-font-size:18px
+}
+
+.task-status{
+ -fx-font-size:14px
+}
+
+.scroll-pane {
+  -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+  -fx-background-color: transparent;
+}
+
+.day{
+-fx-fill:#3A3939;
+-fx-font-size:36px
+}
+
+.day-container{
+  -fx-border-radius: 10 10 10 10;
+  -fx-background-radius: 10 10 10 10;
+  -fx-border-color: linear-gradient(to right, #3A3939, rgba(255,255,255,0.0));
+  -fx-cursor:hand;
+}
+
+.day-selected{
+  -fx-border-color: linear-gradient(to right, #EE519A, rgba(255,255,255,0.0));
+}
+
+.checkbox{
+
+}
