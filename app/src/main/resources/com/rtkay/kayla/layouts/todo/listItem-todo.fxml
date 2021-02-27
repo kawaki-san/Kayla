@@ -13,7 +13,7 @@
         </Text>
         <HBox prefHeight="28.0" prefWidth="387.0">
             <children>
-                <JFXCheckBox  checkedColor="#ee519a" contentDisplay="GRAPHIC_ONLY" prefHeight="0.0" prefWidth="0.0" styleClass="check-box">
+                <JFXCheckBox  checkedColor="#0099FF" contentDisplay="GRAPHIC_ONLY" prefHeight="0.0" prefWidth="0.0" styleClass="check-box">
                     <HBox.margin>
                         <Insets left="48.0" />
                     </HBox.margin>

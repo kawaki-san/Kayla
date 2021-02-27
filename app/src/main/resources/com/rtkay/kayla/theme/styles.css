@@ -117,7 +117,8 @@
 .check-box  .box {
     -fx-border-radius:200px;
     -fx-background-radius:200px;
-     -fx-border-color: #EE519A;
+     -fx-border-color: #0099FF;
+     -fx-color:#0099FF;
 }
 .check-box  .box  .mark {
     -fx-border-radius:200px;
@@ -126,7 +127,7 @@
 .check-box:indeterminate  .box {
     -fx-border-radius:200px;
     -fx-background-radius:200px;
-     -fx-border-color: #EE519A;
+     -fx-border-color: #0099FF;
 }
 .check-box:indeterminate   .box  .mark {
    -fx-border-radius:200px;

@@ -64,13 +64,13 @@ public class StartupController implements Initializable {
         Bindings.bindContentBidirectional(calendarDaysList, hBoxCalendar.getChildren());
         scrollPaneCalendar.prefHeightProperty().bind(hBoxCalendar.prefHeightProperty().subtract(5));
         scrollPaneCalendar.setFitToHeight(true);
-        calendarDaysList.addListener((ListChangeListener<Node>) change -> {
+       /* calendarDaysList.addListener((ListChangeListener<Node>) change -> {
             while (change.next()) {
                 if (change.wasAdded()) {
                     scrollPaneCalendar.hvalueProperty().bind(hBoxCalendar.widthProperty());
                 }
             }
-        });
+        });*/
 
         for (int i = 0; i < 7; i++) {
             try {
