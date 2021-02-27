@@ -1,9 +1,217 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import eu.hansolo.medusa.Gauge?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<StackPane xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml"
-           fx:controller="com.rtkay.kayla.App"
-           prefHeight="896" prefWidth="414">
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
+<StackPane prefHeight="896" prefWidth="414" styleClass="window" stylesheets="@theme/styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rtkay.kayla.ui.StartupController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <StackPane BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <children>
+                  <VBox styleClass="header-pane-bg">
+                     <padding>
+                        <Insets left="7.0" right="7.0" top="7.0" />
+                     </padding>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="10.0" prefWidth="414.0" styleClass="header-pane">
+                     <children>
+                        <HBox alignment="TOP_RIGHT" maxHeight="17.0" minHeight="17.0" prefHeight="17.0" prefWidth="414.0" spacing="7.0">
+                           <children>
+                              <JFXButton contentDisplay="GRAPHIC_ONLY" maxWidth="10.0" prefHeight="10.0" prefWidth="0.0">
+                                 <styleClass>
+                                    <String fx:value="window-buttons" />
+                                    <String fx:value="minimise-button" />
+                                 </styleClass>
+                              </JFXButton>
+                              <JFXButton contentDisplay="GRAPHIC_ONLY">
+                                 <styleClass>
+                                    <String fx:value="window-buttons" />
+                                    <String fx:value="close-button" />
+                                 </styleClass>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="414.0" spacing="7.0">
+                           <children>
+                              <JFXButton contentDisplay="GRAPHIC_ONLY">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fltrmz-options-24" styleClass="toolbar-icons" />
+                                 </graphic>
+                              </JFXButton>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="7.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <MenuButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="MenuButton">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" text="Action 1" />
+                                          <MenuItem mnemonicParsing="false" text="Action 2" />
+                                       </items>
+                                       <graphic>
+                                          <FontIcon iconLiteral="fltral-badge-24" styleClass="toolbar-icons" />
+                                       </graphic>
+                                    </MenuButton>
+                                    <Circle fill="#1f93ff00" radius="10.0" stroke="#29daa8" strokeWidth="3.0" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="14.0" />
+                                 </HBox.margin>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="4.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="144.0" prefWidth="400.0">
+                           <children>
+                              <Gauge customTickLabelFontSize="12.0" minValue="75.0" prefHeight="117.0" prefWidth="143.0" skinType="BAR">
+                                 <barColor>
+                                    <Color red="0.9333333373069763" green="0.3176470696926117" blue="0.6039215922355652" />
+                                 </barColor>
+                                 <HBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </HBox.margin>
+                              </Gauge>
+                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <TextFlow>
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="Wednesday" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text=", " />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="04" />
+                                             </children>
+                                          </TextFlow>
+                                          <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <TextFlow>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="13:44" />
+                                                   </children>
+                                                </TextFlow>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <TextFlow>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You have ">
+                                             <styleClass>
+                                                <String fx:value="task-status" />
+                                                <String fx:value="light-text" />
+                                             </styleClass>
+                                          </Text>
+                                          <Text layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 task">
+                                             <styleClass>
+                                                <String fx:value="task-status" />
+                                                <String fx:value="light-text" />
+                                             </styleClass>
+                                          </Text>
+                                          <Text layoutX="69.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" left for today.">
+                                             <styleClass>
+                                                <String fx:value="task-status" />
+                                                <String fx:value="light-text" />
+                                             </styleClass>
+                                          </Text>
+                                       </children>
+                                    </TextFlow>
+                                    <ScrollPane fx:id="scrollPaneCalendar" hbarPolicy="NEVER" maxHeight="65.0" minHeight="65.0" pannable="true" prefHeight="65.0" prefWidth="200.0" styleClass="scroll-pane" vbarPolicy="NEVER">
+                                       <VBox.margin>
+                                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                       </VBox.margin>
+                                       <content>
+                                          <HBox fx:id="hBoxCalendar" prefHeight="65.0" prefWidth="236.0" spacing="16.0" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="16.0" top="32.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="7.0" right="7.0" top="7.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </StackPane>
+         </top>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <StackPane>
+                     <children>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="150.0" prefWidth="410.0">
+                           <content>
+                              <VBox>
+                                 <children>
+                                    <VBox prefHeight="78.0" prefWidth="387.0" spacing="8.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="light-text" text="13:00">
+                                             <VBox.margin>
+                                                <Insets left="48.0" top="16.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <HBox prefHeight="28.0" prefWidth="387.0">
+                                             <children>
+                                                <JFXCheckBox checkedColor="#ee519a" contentDisplay="GRAPHIC_ONLY" prefHeight="0.0" prefWidth="0.0" styleClass="checkbox">
+                                                   <HBox.margin>
+                                                      <Insets left="48.0" />
+                                                   </HBox.margin>
+                                                </JFXCheckBox>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Check WHMCS logs">
+                                                   <HBox.margin>
+                                                      <Insets left="24.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <Line endX="218.5" startX="-100.0" stroke="#dbdbdb">
+                                             <VBox.margin>
+                                                <Insets left="40.0" />
+                                             </VBox.margin>
+                                          </Line>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                        <JFXToggleButton contentDisplay="GRAPHIC_ONLY" size="4.0" toggleColor="#ee519a" toggleLineColor="#6b6b6b" StackPane.alignment="TOP_RIGHT">
+                           <StackPane.margin>
+                              <Insets right="16.0" />
+                           </StackPane.margin>
+                        </JFXToggleButton>
+                     </children>
+                  </StackPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
 </StackPane>

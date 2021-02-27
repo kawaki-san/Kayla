@@ -15,6 +15,7 @@ plugins {
 repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
+    mavenCentral()
 }
 
 javafx{
@@ -28,6 +29,11 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
+    implementation 'com.jfoenix:jfoenix:9.0.10'
+    implementation 'org.kordamp.ikonli:ikonli-javafx:12.2.0'
+    implementation 'org.kordamp.ikonli:ikonli-fluentui-pack:12.2.0'
+    implementation 'eu.hansolo:Medusa:11.5'
+
 }
 
 application {

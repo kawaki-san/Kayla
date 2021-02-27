@@ -1,0 +1,103 @@
+@font-face {
+    font-family: Inter Black;
+    src: url(Inter-Black.otf);
+}
+
+@font-face {
+    font-family: Inter Black Italic;
+    src: url(Inter-BlackItalic.otf);
+}
+
+@font-face {
+    font-family: Inter Bold;
+    src: url(Inter-Bold.otf);
+}
+
+@font-face {
+    font-family: Inter Bold Italic;
+    src: url(Inter-BoldItalic.otf);
+}
+
+@font-face {
+    font-family: Inter Extra Bold;
+    src: url(Inter-ExtraBold.otf);
+}
+
+@font-face {
+    font-family: Inter Extra Bold Italic;
+    src: url(Inter-ExtraBoldItalic.otf);
+}
+
+@font-face {
+    font-family: Inter Extra Light;
+    src: url(Inter-ExtraLight.otf);
+}
+
+@font-face {
+    font-family: Inter Extra Light Italic;
+    src: url(Inter-ExtraLightItalic.otf);
+}
+
+@font-face {
+    font-family: Inter Italic;
+    src: url(Inter-Italic.otf);
+}
+
+@font-face {
+    font-family: Inter Light;
+    src: url(Inter-Light.otf);
+}
+
+@font-face {
+    font-family: Inter Light Italic;
+    src: url(Inter-LightItalic.otf);
+}
+
+@font-face {
+    font-family: Inter Medium;
+    src: url(Inter-Medium.otf);
+}
+
+@font-face {
+    font-family: Inter Medium Italic;
+    src: url(Inter-MediumItalic.otf);
+}
+
+@font-face {
+    font-family: Inter Regular;
+    src: url(Inter-Regular.otf);
+}
+
+@font-face {
+    font-family: Inter Semi Bold;
+    src: url(Inter-SemiBold.otf);
+}
+
+@font-face {
+    font-family: Inter Semi Bold Italic;
+    src: url(Inter-SemiBoldItalic.otf);
+}
+
+@font-face {
+    font-family: Inter Thin;
+    src: url(Inter-Thin.otf);
+}
+@font-face {
+    font-family: Inter Thin Italic;
+    src: url(Inter-ThinItalic.otf);
+}
+
+.label {
+    -fx-font-family: "Inter Regular";
+    -fx-font-smoothing-type: lcd;
+    -fx-font-size: 20;
+}
+
+.button .text {
+    -fx-font-family: "Inter Regular";
+    -fx-font-smoothing-type: lcd;
+}
+.text {
+    -fx-font-family: "Inter Regular";
+    -fx-font-smoothing-type: lcd;
+}

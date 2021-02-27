@@ -23,6 +23,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         StackPane root = FXMLLoader.load(getClass().getResource("main.fxml"));
         Scene scene  = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("theme/fonts/selector.css").toExternalForm());
         primaryStage.setTitle(getName());
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(scene);
