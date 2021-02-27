@@ -1,5 +1,6 @@
 package com.rtkay.kayla.ui;
 
+import com.rtkay.kayla.api.outlook.calendar.CalendarDriver;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -10,7 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -35,8 +35,10 @@ public class StartupController implements Initializable {
 
         calendarUISetup();
         todoListUI();
-
+        new CalendarDriver();
     }
+
+
 
     private void todoListUI() {
         Bindings.bindContentBidirectional(todoList, vBoxTodo.getChildren());
@@ -64,14 +66,6 @@ public class StartupController implements Initializable {
         Bindings.bindContentBidirectional(calendarDaysList, hBoxCalendar.getChildren());
         scrollPaneCalendar.prefHeightProperty().bind(hBoxCalendar.prefHeightProperty().subtract(5));
         scrollPaneCalendar.setFitToHeight(true);
-       /* calendarDaysList.addListener((ListChangeListener<Node>) change -> {
-            while (change.next()) {
-                if (change.wasAdded()) {
-                    scrollPaneCalendar.hvalueProperty().bind(hBoxCalendar.widthProperty());
-                }
-            }
-        });*/
-
         for (int i = 0; i < 7; i++) {
             try {
                 VBox day = FXMLLoader.load(getClass().getResource("../layouts/calendar/calendar-day.fxml"));
@@ -86,4 +80,6 @@ public class StartupController implements Initializable {
             }
         }
     }
+
+
 }

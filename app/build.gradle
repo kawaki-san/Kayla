@@ -34,9 +34,18 @@ dependencies {
     implementation 'org.kordamp.ikonli:ikonli-fluentui-pack:12.2.0'
     implementation 'eu.hansolo:Medusa:11.5'
 
+    implementation 'com.microsoft.azure:msal4j:1.8.0' // to authenticate the user and acquire access tokens.
+    implementation 'com.microsoft.graph:microsoft-graph:2.4.1' //to make calls to the Microsoft Graph.
+    implementation 'org.slf4j:slf4j-nop:1.8.0-beta4' //to suppress logging from MSAL.
+    implementation 'joda-time:joda-time:2.10.10'
+
 }
 
 application {
     // Define the main class for the application.
     mainClass.set('com.rtkay.kayla.App')
+}
+
+run {
+    standardInput = System.in
 }
