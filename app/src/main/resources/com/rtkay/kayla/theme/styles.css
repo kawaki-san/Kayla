@@ -110,6 +110,26 @@
   -fx-border-color: linear-gradient(to right, #EE519A, rgba(255,255,255,0.0));
 }
 
-.checkbox{
-
+.check-box {
+  -fx-border-radius:200px;
+  -fx-background-radius:200px;
 }
+.check-box  .box {
+    -fx-border-radius:200px;
+    -fx-background-radius:200px;
+     -fx-border-color: #EE519A;
+}
+.check-box  .box  .mark {
+    -fx-border-radius:200px;
+    -fx-background-radius:200px;
+}
+.check-box:indeterminate  .box {
+    -fx-border-radius:200px;
+    -fx-background-radius:200px;
+     -fx-border-color: #EE519A;
+}
+.check-box:indeterminate   .box  .mark {
+   -fx-border-radius:200px;
+   -fx-background-radius:200px;
+}
+

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import eu.hansolo.medusa.Gauge?>
 <?import java.lang.String?>
@@ -15,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
@@ -163,40 +161,9 @@
                <children>
                   <StackPane>
                      <children>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="150.0" prefWidth="410.0">
+                        <ScrollPane fx:id="scrollPaneTodo" hbarPolicy="NEVER" prefHeight="150.0" prefWidth="410.0">
                            <content>
-                              <VBox>
-                                 <children>
-                                    <VBox prefHeight="78.0" prefWidth="387.0" spacing="8.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="light-text" text="13:00">
-                                             <VBox.margin>
-                                                <Insets left="48.0" top="16.0" />
-                                             </VBox.margin>
-                                          </Text>
-                                          <HBox prefHeight="28.0" prefWidth="387.0">
-                                             <children>
-                                                <JFXCheckBox checkedColor="#ee519a" contentDisplay="GRAPHIC_ONLY" prefHeight="0.0" prefWidth="0.0" styleClass="checkbox">
-                                                   <HBox.margin>
-                                                      <Insets left="48.0" />
-                                                   </HBox.margin>
-                                                </JFXCheckBox>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Check WHMCS logs">
-                                                   <HBox.margin>
-                                                      <Insets left="24.0" />
-                                                   </HBox.margin>
-                                                </Text>
-                                             </children>
-                                          </HBox>
-                                          <Line endX="218.5" startX="-100.0" stroke="#dbdbdb">
-                                             <VBox.margin>
-                                                <Insets left="40.0" />
-                                             </VBox.margin>
-                                          </Line>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </VBox>
+                              <VBox fx:id="vBoxTodo" />
                            </content>
                         </ScrollPane>
                         <JFXToggleButton contentDisplay="GRAPHIC_ONLY" size="4.0" toggleColor="#ee519a" toggleLineColor="#6b6b6b" StackPane.alignment="TOP_RIGHT">
