@@ -18,6 +18,9 @@
 <?import javafx.scene.text.TextFlow?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
+<?import com.rtkay.kayla.api.outlook.calendar.observer.clock.MyClock?>
+<?import com.rtkay.kayla.api.outlook.calendar.observer.dayOfWeek.MyDayOfTheWeek?>
+<?import com.rtkay.kayla.api.outlook.calendar.observer.dayOfWeek.MyDayOfTheOfMonth?>
 <StackPane prefHeight="896" prefWidth="414" styleClass="window" stylesheets="@theme/styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rtkay.kayla.ui.StartupController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
@@ -36,13 +39,13 @@
                      <children>
                         <HBox alignment="TOP_RIGHT" maxHeight="17.0" minHeight="17.0" prefHeight="17.0" prefWidth="414.0" spacing="7.0">
                            <children>
-                              <JFXButton contentDisplay="GRAPHIC_ONLY" maxWidth="10.0" prefHeight="10.0" prefWidth="0.0">
+                              <JFXButton contentDisplay="GRAPHIC_ONLY" fx:id="btnMinimiseWindow" maxWidth="10.0" prefHeight="10.0" prefWidth="0.0">
                                  <styleClass>
                                     <String fx:value="window-buttons" />
                                     <String fx:value="minimise-button" />
                                  </styleClass>
                               </JFXButton>
-                              <JFXButton contentDisplay="GRAPHIC_ONLY">
+                              <JFXButton contentDisplay="GRAPHIC_ONLY" fx:id="btnCloseWindow">
                                  <styleClass>
                                     <String fx:value="window-buttons" />
                                     <String fx:value="close-button" />
@@ -95,16 +98,16 @@
                                        <children>
                                           <TextFlow>
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="Wednesday" />
+                                                <MyDayOfTheWeek fx:id="txtDayOfTheWeek" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="Wednesday" />
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text=", " />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="04" />
+                                                <MyDayOfTheOfMonth fx:id="txtDayOfTheMonth" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="04" />
                                              </children>
                                           </TextFlow>
                                           <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
                                              <children>
                                                 <TextFlow>
                                                    <children>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="13:44" />
+                                                      <MyClock fx:id="txtTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="13:44" />
                                                    </children>
                                                 </TextFlow>
                                              </children>

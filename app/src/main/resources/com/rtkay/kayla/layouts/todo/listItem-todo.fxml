@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
-<VBox prefHeight="78.0" prefWidth="387.0" spacing="8.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="78.0" prefWidth="387.0" spacing="8.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rtkay.kayla.api.outlook.calendar.CalendarDriver">
     <children>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="light-text" text="13:00">
+        <Text fx:id="txtEventTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="light-text" text="13:00">
             <VBox.margin>
                 <Insets left="48.0" top="16.0" />
             </VBox.margin>
@@ -18,7 +18,7 @@
                         <Insets left="48.0" />
                     </HBox.margin>
                 </JFXCheckBox>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Check WHMCS logs">
+                <Text fx:id="txtEventSubject" strokeType="OUTSIDE" strokeWidth="0.0" text="Check WHMCS logs">
                     <HBox.margin>
                         <Insets left="24.0" />
                     </HBox.margin>

@@ -49,6 +49,7 @@
  -fx-min-width: -fx-max-width;
  -fx-max-height: -fx-min-width;
  -fx-min-height: -fx-min-width;
+ -fx-cursor:hand;
 }
 
 .close-button{

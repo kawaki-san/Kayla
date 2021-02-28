@@ -62,6 +62,7 @@ public class Graph {
 
         return me;
     }
+
     public static List<Event> getCalendarView(String accessToken,
                                               ZonedDateTime viewStart, ZonedDateTime viewEnd, String timeZone) {
         ensureGraphClient(accessToken);
@@ -117,8 +118,7 @@ public class Graph {
             LocalDateTime start,
             LocalDateTime end,
             Set<String> attendees,
-            String body)
-    {
+            String body) {
         ensureGraphClient(accessToken);
 
         Event newEvent = new Event();
