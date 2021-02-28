@@ -12,7 +12,6 @@ public class MyClock extends Text implements IObserverClock {
         String minutes = String.format("%02d", dt.getMinuteOfHour());
         String seconds = String.format("%02d", dt.getSecondOfMinute());
         setText(hours + ":" + minutes + ":" + seconds);
-        System.out.println(hours + ":" + minutes + ":" + seconds);
     }
 
     public void setDateValue(DateTime dateTime) {

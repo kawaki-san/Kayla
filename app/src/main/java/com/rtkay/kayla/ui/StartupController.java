@@ -2,9 +2,11 @@ package com.rtkay.kayla.ui;
 
 import com.jfoenix.controls.JFXButton;
 import com.rtkay.kayla.api.outlook.calendar.CalendarDriver;
+import com.rtkay.kayla.api.outlook.calendar.GetCalendar;
+import com.rtkay.kayla.api.outlook.calendar.SetupCalendarUI;
 import com.rtkay.kayla.api.outlook.calendar.observer.clock.MyClock;
-import com.rtkay.kayla.api.outlook.calendar.observer.dayOfWeek.MyDayOfTheOfMonth;
-import com.rtkay.kayla.api.outlook.calendar.observer.dayOfWeek.MyDayOfTheWeek;
+import com.rtkay.kayla.api.outlook.calendar.observer.days.MyCustomDate;
+import eu.hansolo.medusa.Gauge;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,15 +24,18 @@ import java.util.ResourceBundle;
 
 public class StartupController implements Initializable {
     @FXML
+    private Gauge progressGauge;
+    @FXML
+    private Text txtTaskCount;
+    @FXML
     private JFXButton btnCloseWindow;
     @FXML
     private JFXButton btnMinimiseWindow;
     @FXML
     private MyClock txtTime;
     @FXML
-    private MyDayOfTheWeek txtDayOfTheWeek;
-    @FXML
-    private MyDayOfTheOfMonth txtDayOfTheMonth;
+    private MyCustomDate txtCustomDate;
+
     @FXML
     private ScrollPane scrollPaneTodo;
     @FXML
@@ -42,6 +47,7 @@ public class StartupController implements Initializable {
     private ObservableList<Node> calendarDaysList = FXCollections.observableArrayList();
     private ObservableList<Node> todoList = FXCollections.observableArrayList();
     private CalendarDriver calendarDriver;
+    private final SetupCalendarUI setupCalendarUI = new SetupCalendarUI();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,10 +57,12 @@ public class StartupController implements Initializable {
             stage.setIconified(true);
         }));
 
-       calendarDriver = new CalendarDriver();
-        calendarDriver.initialiseClock(txtDayOfTheMonth, txtDayOfTheWeek, txtTime);
-       /* calendarDriver.setupCalendarDays(calendarDaysList,hBoxCalendar,scrollPaneCalendar,todoList,vBoxTodo,scrollPaneTodo);*/
-
+        calendarDriver = new CalendarDriver();
+        calendarDriver.initialiseClock(txtCustomDate, txtTime);
+        setupCalendarUI.setupCalendarUI(calendarDaysList, hBoxCalendar, scrollPaneCalendar);
+        setupCalendarUI.setupEventsUI(todoList, vBoxTodo, scrollPaneTodo);
+        GetCalendar.setTaskCount(txtTaskCount);
+        GetCalendar.setProgressGauge(progressGauge);
     }
 
 

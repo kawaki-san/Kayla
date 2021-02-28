@@ -79,10 +79,10 @@ public class Graph {
         // GET /me/events
         IEventCollectionPage eventPage = graphClient
                 .me()
-                .calendarView()
+                .calendarView() //The URL that will be called is /me/calendarview.
                 .buildRequest(options)
-                .select("subject,organizer,start,end")
-                .top(25)
+                .select("subject,organizer,start,end") //limits the fields returned for each event to just those the app will actually use
+                .top(25) //limits the number of events in the response to a maximum of 25.
                 .get();
 
         List<Event> allEvents = new LinkedList<Event>();
@@ -91,7 +91,7 @@ public class Graph {
         // paging request should not include the query parameters from the initial
         // request, but should include the headers.
         List<Option> pagingOptions = new LinkedList<Option>();
-        pagingOptions.add(new HeaderOption("Prefer", "outlook.timezone=\"" + timeZone + "\""));
+        pagingOptions.add(new HeaderOption("Prefer", "outlook.timezone=\"" + timeZone + "\"")); //causing the start and end times to be adjusted to the user's time zone
 
         while (eventPage != null) {
             allEvents.addAll(eventPage.getCurrentPage());

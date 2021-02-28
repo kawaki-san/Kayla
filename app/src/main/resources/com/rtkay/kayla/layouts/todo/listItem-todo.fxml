@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
-<VBox prefHeight="78.0" prefWidth="387.0" spacing="8.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rtkay.kayla.api.outlook.calendar.CalendarDriver">
+<VBox prefHeight="78.0" prefWidth="387.0" spacing="8.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rtkay.kayla.api.outlook.calendar.GetCalendar">
     <children>
         <Text fx:id="txtEventTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="light-text" text="13:00">
             <VBox.margin>
