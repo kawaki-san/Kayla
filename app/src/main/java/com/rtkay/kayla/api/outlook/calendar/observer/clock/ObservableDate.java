@@ -33,7 +33,7 @@ public class ObservableDate implements IObservableClock, IObservableDay {
     @Override
     public void dayChanged() {
         for (IObserverDay control : dayObserversList) {
-            control.updateDayOfTheWeek();
+            control.updateDate();
         }
 
     }
@@ -42,6 +42,12 @@ public class ObservableDate implements IObservableClock, IObservableDay {
     public void clockChanged() {
         for (IObserverClock control : clockObserversList) {
             control.updateTime();
+        }
+    }
+
+    public void updateCalendar() {
+        for (IObserverDay control : dayObserversList) {
+            control.updateCalendar();
         }
     }
 }

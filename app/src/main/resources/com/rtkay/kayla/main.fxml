@@ -159,7 +159,7 @@
                               <VBox fx:id="vBoxTodo" />
                            </content>
                         </ScrollPane>
-                        <JFXToggleButton contentDisplay="GRAPHIC_ONLY" size="4.0" toggleColor="#ee519a" toggleLineColor="#6b6b6b" StackPane.alignment="TOP_RIGHT">
+                        <JFXToggleButton fx:id="toggleEvents" contentDisplay="GRAPHIC_ONLY" size="6.0" toggleColor="#ee519a" toggleLineColor="#6b6b6b" StackPane.alignment="TOP_RIGHT">
                            <StackPane.margin>
                               <Insets right="16.0" />
                            </StackPane.margin>

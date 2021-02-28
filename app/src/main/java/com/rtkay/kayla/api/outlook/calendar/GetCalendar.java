@@ -30,8 +30,7 @@ public class GetCalendar {
     protected static Gauge circleProgress;
     private static int size;
     private static int total;
-
-    static void getCalendarEvents(String accessToken, String timeZone) throws IOException {
+    public static void getCalendarEvents(String accessToken, String timeZone) throws IOException {
         ZoneId tzId = GraphToIana.getZoneIdFromWindows("Pacific Standard Time");
 
         // Get midnight of the first day of the week (assumed Sunday)
@@ -95,6 +94,7 @@ public class GetCalendar {
                     //search through map for that date
                     for (Map.Entry<LocalDate, List<Event>> newEntry : CalendarDriver.daysContainingEvents.entrySet()) {
                         if (newEntry.getKey().getDayOfMonth() == dayOfMonth) {
+                            SetupCalendarUI.eventsList.clear();
                             for (Event e : newEntry.getValue()) {
                                 VBox dayEvents = null;
                                 try {
@@ -109,7 +109,6 @@ public class GetCalendar {
                                     eventSubject.setText(e.subject);
                                     VBox finalDayEvents = dayEvents;
                                     Platform.runLater(() -> {
-                                        SetupCalendarUI.eventsList.clear();
                                         SetupCalendarUI.eventsList.add(finalDayEvents);
                                     });
                                 } catch (IOException ioException) {

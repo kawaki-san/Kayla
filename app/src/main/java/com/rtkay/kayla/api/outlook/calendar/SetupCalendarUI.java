@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 
 public class SetupCalendarUI {
     protected static ObservableList<Node> calendarList;
-    protected static ObservableList<Node> eventsList;
+    public static ObservableList<Node> eventsList;
     public SetupCalendarUI() {
     }
 

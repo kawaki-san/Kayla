@@ -73,6 +73,7 @@ public class CalendarDriver {
                         System.out.println("Time zone: " + user.mailboxSettings.timeZone);
                         System.out.println();
                         // List the calendar
+                        txtCustomDate.setOptions(accessToken,user);
                         GetCalendar.getCalendarEvents(accessToken, user.mailboxSettings.timeZone);
                         latch.await();
                         //Keep with the background work
@@ -98,6 +99,7 @@ public class CalendarDriver {
             if (currentTime.getDayOfMonth() != todayDate) {
                 todayDate = currentTime.getDayOfMonth();
                 date.dayChanged();
+                date.updateCalendar();
             }
         }),
                 new KeyFrame(Duration.seconds(1))
