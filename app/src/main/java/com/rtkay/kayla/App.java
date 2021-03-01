@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class App extends Application {
+    private double xOffset = 0;
+    private double yOffset = 0;
     public String getName() {
         return "Kayla!";
     }
@@ -26,6 +28,14 @@ public class App extends Application {
         scene.getStylesheets().add(getClass().getResource("theme/fonts/selector.css").toExternalForm());
         primaryStage.setTitle(getName());
         primaryStage.initStyle(StageStyle.UNDECORATED);
+        root.setOnMousePressed(e -> {
+            xOffset = primaryStage.getX() - e.getScreenX();
+            yOffset = primaryStage.getY() - e.getScreenY();
+        });
+        root.setOnMouseDragged(e -> {
+            primaryStage.setX(e.getScreenX() + xOffset);
+            primaryStage.setY(e.getScreenY() + yOffset);
+        });
         primaryStage.setScene(scene);
         primaryStage.show();
     }
