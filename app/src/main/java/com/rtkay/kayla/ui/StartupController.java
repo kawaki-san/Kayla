@@ -64,6 +64,7 @@ public class StartupController implements Initializable {
         calendarDriver.initialiseClock(txtCustomDate, txtTime);
         setupCalendarUI.setupCalendarUI(calendarDaysList, hBoxCalendar, scrollPaneCalendar);
         setupCalendarUI.setupEventsUI(todoList, vBoxTodo, scrollPaneTodo);
+        GetCalendar.setCalendarScrollPane(scrollPaneCalendar);
         GetCalendar.setTaskCount(txtTaskCount);
         GetCalendar.setProgressGauge(progressGauge);
         scrollPaneTodo.managedProperty().bind(scrollPaneTodo.visibleProperty());

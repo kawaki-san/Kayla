@@ -56,6 +56,7 @@ public class CalendarDriver {
                         todayDate = instance.getDayOfMonth();
                         txtCustomDate.setDateValue(instance);
                         clock(txtCurrentTime, txtCustomDate);
+                        GetCalendar.setDate(instance);
                         final Properties oAuthProperties = new Properties();
                         try {
                             oAuthProperties.load(App.class.getResourceAsStream("api/calendar/oAuth.properties"));

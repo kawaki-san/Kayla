@@ -4,10 +4,12 @@ import animatefx.animation.Pulse;
 import com.jfoenix.controls.JFXCheckBox;
 import com.microsoft.graph.models.extensions.Event;
 import com.rtkay.kayla.App;
+import com.rtkay.kayla.ui.utilities.WindowControls;
 import eu.hansolo.medusa.Gauge;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -31,6 +33,9 @@ public class GetCalendar {
     protected static Gauge circleProgress;
     private static int size;
     private static int total;
+    private static DateTime today;
+    private static ScrollPane calendarScrollPane;
+
     public static void getCalendarEvents(String accessToken, String timeZone) throws IOException {
         ZoneId tzId = GraphToIana.getZoneIdFromWindows("Pacific Standard Time");
 
@@ -65,7 +70,6 @@ public class GetCalendar {
         }
         System.out.println("Map size is " + CalendarDriver.daysContainingEvents.size()); //outputs 7
         if (CalendarDriver.daysContainingEvents.size() > 0) {
-            int count = 0;
             for (Map.Entry<LocalDate, List<Event>> entry : CalendarDriver.daysContainingEvents.entrySet()) {
 
                 VBox day = FXMLLoader.load(App.class.getResource("layouts/calendar/calendar-day.fxml"));
@@ -76,16 +80,61 @@ public class GetCalendar {
                 day.setOnMouseExited(e ->
                         day.getStyleClass().remove("day-selected")
                 );
-                if (count == 0) {
-                    day.getStyleClass().add("day-selected");
-                }
-
-                count++;
                 List<Event> entries = entry.getValue();
                 System.out.println(entry.getKey() + "/" + entry.getValue());
                 System.out.println("Events for " + entry.getKey().toString() + " that day are");
                 Text dayNum = (Text) day.getChildren().get(0);
                 String date = String.format("%02d", entry.getKey().getDayOfMonth());
+                if (today.getDayOfMonth()== entry.getKey().getDayOfMonth()){
+                    day.getStyleClass().add("day-selected");
+                    WindowControls.centerNodeInScrollPane(calendarScrollPane,day);
+
+                    List<Event> value = entry.getValue();
+                    circleProgress.setValue(0);
+                    circleProgress.setMinValue(0);
+                    circleProgress.setMaxValue(100);
+                    size = value.size();
+                    total = value.size();
+                    if (size == 0) {
+                        activeTask.setText("no tasks");
+                    } else if (size == 1) {
+                        activeTask.setText("1 task");
+                    } else {
+                        activeTask.setText(size + " tasks");
+                    }
+                    for (Event event : value) {
+                        VBox dayEvents = FXMLLoader.load(App.class.getResource("layouts/todo/listItem-todo.fxml"));
+                        DateTime currentDay = new DateTime(event.start.dateTime);
+                        String hours = String.format("%02d", currentDay.getHourOfDay());
+                        String minutes = String.format("%02d", currentDay.getMinuteOfHour());
+                        Text eventTime = (Text) dayEvents.getChildren().get(0);
+                        eventTime.setText(hours + ":" + minutes);
+                        HBox eventContainer = (HBox) dayEvents.getChildren().get(1);
+                        Text eventSubject = (Text) eventContainer.getChildren().get(1);
+                        JFXCheckBox selection = (JFXCheckBox) eventContainer.getChildren().get(0);
+                        selection.selectedProperty().addListener(d -> {
+                            if (selection.isSelected()) {
+                                size = size-1;
+                            }
+                            if (!selection.isSelected()) {
+                                size = size+1;
+                            }
+
+                            if (size == 0) {
+                                activeTask.setText("no tasks");
+                            } else if (size == 1) {
+                                activeTask.setText("1 task");
+                            } else {
+                                activeTask.setText(size + " tasks");
+                            }
+                            calculateChanges(size);
+                        });
+                        eventSubject.setText(event.subject);
+                        Platform.runLater(() ->
+                                SetupCalendarUI.eventsList.add(dayEvents));
+
+                    }
+                }
                 dayNum.setText(date);
 
                 day.setOnMouseClicked(event -> {
@@ -129,7 +178,7 @@ public class GetCalendar {
                     System.out.println(e.subject);
                 }
                 try {
-                    Thread.sleep(600);
+                    Thread.sleep(400);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -137,52 +186,7 @@ public class GetCalendar {
             }
             Map.Entry<LocalDate, List<Event>> entry = CalendarDriver.daysContainingEvents.entrySet().iterator().next();
             //  LocalDate key = entry.getKey();
-            List<Event> value = entry.getValue();
 
-            for (Event event : value) {
-                VBox dayEvents = FXMLLoader.load(App.class.getResource("layouts/todo/listItem-todo.fxml"));
-                DateTime currentDay = new DateTime(event.start.dateTime);
-                String hours = String.format("%02d", currentDay.getHourOfDay());
-                String minutes = String.format("%02d", currentDay.getMinuteOfHour());
-                Text eventTime = (Text) dayEvents.getChildren().get(0);
-                eventTime.setText(hours + ":" + minutes);
-                HBox eventContainer = (HBox) dayEvents.getChildren().get(1);
-                Text eventSubject = (Text) eventContainer.getChildren().get(1);
-                JFXCheckBox selection = (JFXCheckBox) eventContainer.getChildren().get(0);
-                size = value.size();
-                total = value.size();
-                if (size == 0) {
-                    activeTask.setText("no tasks");
-                } else if (size == 1) {
-                    activeTask.setText("1 task");
-                } else {
-                    activeTask.setText(size + " tasks");
-                }
-                circleProgress.setValue(0);
-                circleProgress.setMinValue(0);
-                circleProgress.setMaxValue(100);
-                selection.selectedProperty().addListener(d -> {
-                    if (selection.isSelected()) {
-                        size = size-1;
-                    }
-                    if (!selection.isSelected()) {
-                        size = size+1;
-                    }
-
-                    if (size == 0) {
-                        activeTask.setText("no tasks");
-                    } else if (size == 1) {
-                        activeTask.setText("1 task");
-                    } else {
-                        activeTask.setText(size + " tasks");
-                    }
-                    calculateChanges(size);
-                });
-                eventSubject.setText(event.subject);
-                Platform.runLater(() ->
-                        SetupCalendarUI.eventsList.add(dayEvents));
-
-            }
 
             System.out.println();
         }
@@ -209,5 +213,13 @@ public class GetCalendar {
 
     public static void setProgressGauge(Gauge progressGauge) {
         circleProgress = progressGauge;
+    }
+
+    public static void setDate(DateTime instance) {
+        today = instance;
+    }
+
+    public static void setCalendarScrollPane(ScrollPane scrollPaneCalendar) {
+        calendarScrollPane = scrollPaneCalendar;
     }
 }
