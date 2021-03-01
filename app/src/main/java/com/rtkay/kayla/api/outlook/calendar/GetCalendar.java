@@ -1,5 +1,6 @@
 package com.rtkay.kayla.api.outlook.calendar;
 
+import animatefx.animation.Pulse;
 import com.jfoenix.controls.JFXCheckBox;
 import com.microsoft.graph.models.extensions.Event;
 import com.rtkay.kayla.App;
@@ -57,7 +58,7 @@ public class GetCalendar {
             String fDate = localDate.toString(fmt);
             List<Event> todayEvents = CalendarDriver.daysContainingEvents.get(localDate);
             if (todayEvents == null) {
-                todayEvents = new ArrayList<Event>();
+                todayEvents = new ArrayList<>();
             }
             todayEvents.add(dayEvent);
             CalendarDriver.daysContainingEvents.put(localDate, todayEvents);
@@ -68,6 +69,7 @@ public class GetCalendar {
             for (Map.Entry<LocalDate, List<Event>> entry : CalendarDriver.daysContainingEvents.entrySet()) {
 
                 VBox day = FXMLLoader.load(App.class.getResource("layouts/calendar/calendar-day.fxml"));
+                new Pulse(day).play();
                 day.setOnMouseEntered(e ->
                         day.getStyleClass().add("day-selected")
                 );
@@ -125,6 +127,11 @@ public class GetCalendar {
                 Platform.runLater(() -> SetupCalendarUI.calendarList.add(day));
                 for (Event e : entries) {
                     System.out.println(e.subject);
+                }
+                try {
+                    Thread.sleep(600);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
                 System.out.println("-------------------------------------------------");
             }

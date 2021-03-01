@@ -71,8 +71,8 @@
   -fx-background-color: linear-gradient(to bottom right, white, rgba(255,255,255,0.4));
   -fx-border-radius: 0 0 0 80;
   -fx-background-radius: 0 0 0 80;
+    /* top-left, top-right, bottom-right, and bottom-left corners, in that order. */
   -fx-border-color: white;
-  /* top-left, top-right, bottom-right, and bottom-left corners, in that order. */
 }
 .header-pane{
   -fx-background-color:transparent;
@@ -134,4 +134,21 @@
    -fx-border-radius:200px;
    -fx-background-radius:200px;
 }
+.section-title{
+    -fx-font-size:14px;
+}
 
+.socials-icons-menu-button{
+-fx-icon-size:16;
+}
+
+.reddit-icon{
+-fx-icon-color:#FF5700;
+}
+.vbox-socials{
+  -fx-background-color: linear-gradient(to bottom right, white, rgba(255,255,255,0.4));
+  -fx-border-radius: 12 12 12 12;
+  -fx-background-radius: 12 12 12 12;
+    /* top-left, top-right, bottom-right, and bottom-left corners, in that order. */
+   -fx-border-color: white;
+}

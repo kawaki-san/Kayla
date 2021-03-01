@@ -2,17 +2,22 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXToggleButton?>
-<?import com.rtkay.kayla.api.outlook.calendar.observer.clock.MyClock?>
-<?import com.rtkay.kayla.api.outlook.calendar.observer.days.MyCustomDate?>
 <?import eu.hansolo.medusa.Gauge?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-<?import java.lang.*?>
+
 <StackPane prefHeight="896" prefWidth="414" styleClass="window" stylesheets="@theme/styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rtkay.kayla.ui.StartupController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
@@ -31,13 +36,13 @@
                      <children>
                         <HBox alignment="TOP_RIGHT" maxHeight="17.0" minHeight="17.0" prefHeight="17.0" prefWidth="414.0" spacing="7.0">
                            <children>
-                              <JFXButton contentDisplay="GRAPHIC_ONLY" fx:id="btnMinimiseWindow" maxWidth="10.0" prefHeight="10.0" prefWidth="0.0">
+                              <JFXButton fx:id="btnMinimiseWindow" contentDisplay="GRAPHIC_ONLY" maxWidth="10.0" prefHeight="10.0" prefWidth="0.0">
                                  <styleClass>
                                     <String fx:value="window-buttons" />
                                     <String fx:value="minimise-button" />
                                  </styleClass>
                               </JFXButton>
-                              <JFXButton contentDisplay="GRAPHIC_ONLY" fx:id="btnCloseWindow">
+                              <JFXButton fx:id="btnCloseWindow" contentDisplay="GRAPHIC_ONLY">
                                  <styleClass>
                                     <String fx:value="window-buttons" />
                                     <String fx:value="close-button" />
@@ -76,7 +81,7 @@
                         </HBox>
                         <HBox prefHeight="144.0" prefWidth="400.0">
                            <children>
-                              <Gauge fx:id="progressGauge" valueColor="transparent" customTickLabelFontSize="12.0" prefHeight="117.0" prefWidth="143.0" skinType="BAR">
+                              <Gauge fx:id="progressGauge" customTickLabelFontSize="12.0" prefHeight="117.0" prefWidth="143.0" skinType="BAR" valueColor="transparent">
                                  <barColor>
                                     <Color red="0.9333333373069763" green="0.3176470696926117" blue="0.6039215922355652" />
                                  </barColor>
@@ -90,14 +95,20 @@
                                        <children>
                                           <TextFlow>
                                              <children>
+<!--
                                                 <MyCustomDate fx:id="txtCustomDate" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="Wednesday" />
+-->
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="Wednesday" />
                                              </children>
                                           </TextFlow>
                                           <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
                                              <children>
                                                 <TextFlow>
                                                    <children>
+<!--
                                                       <MyClock fx:id="txtTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="13:44" />
+-->
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="13:44" />
                                                    </children>
                                                 </TextFlow>
                                              </children>
@@ -159,13 +170,56 @@
                               <VBox fx:id="vBoxTodo" />
                            </content>
                         </ScrollPane>
-                        <JFXToggleButton fx:id="toggleEvents" contentDisplay="GRAPHIC_ONLY" size="6.0" toggleColor="#ee519a" toggleLineColor="#6b6b6b" StackPane.alignment="TOP_RIGHT">
+                        <JFXToggleButton fx:id="toggleEvents" contentDisplay="GRAPHIC_ONLY" selected="true" size="6.0" toggleColor="#ee519a" toggleLineColor="#6b6b6b" StackPane.alignment="TOP_RIGHT">
                            <StackPane.margin>
                               <Insets right="16.0" />
                            </StackPane.margin>
                         </JFXToggleButton>
                      </children>
                   </StackPane>
+                  <VBox prefHeight="412.0" prefWidth="378.0">
+                     <children>
+                        <HBox prefHeight="0.0" prefWidth="378.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Latest from your Reddit">
+                                 <styleClass>
+                                    <String fx:value="semi-bold-text" />
+                                    <String fx:value="section-title" />
+                                 </styleClass>
+                              </Text>
+                              <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <MenuButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="MenuButton">
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                                      </items>
+                                       <graphic>
+                                          <FontIcon iconLiteral="fab-reddit">
+                                             <styleClass>
+                                                <String fx:value="socials-icons-menu-button" />
+                                                <String fx:value="reddit-icon" />
+                                             </styleClass>
+                                          </FontIcon>
+                                       </graphic>
+                                    </MenuButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="388.0" prefWidth="362.0">
+                           <VBox.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" />
+                           </VBox.margin>
+                           <content>
+                              <VBox prefHeight="362.0" prefWidth="360.0" styleClass="vbox-socials" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="16.0" right="16.0" />
+                     </VBox.margin>
+                  </VBox>
                </children>
                <BorderPane.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
