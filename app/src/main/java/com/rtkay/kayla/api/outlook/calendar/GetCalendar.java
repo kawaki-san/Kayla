@@ -35,6 +35,7 @@ public class GetCalendar {
     private static int total;
     private static DateTime today;
     private static ScrollPane calendarScrollPane;
+    private static VBox selectedDay;
 
     public static void getCalendarEvents(String accessToken, String timeZone) throws IOException {
         ZoneId tzId = GraphToIana.getZoneIdFromWindows("Pacific Standard Time");
@@ -85,58 +86,10 @@ public class GetCalendar {
                 System.out.println("Events for " + entry.getKey().toString() + " that day are");
                 Text dayNum = (Text) day.getChildren().get(0);
                 String date = String.format("%02d", entry.getKey().getDayOfMonth());
-                if (today.getDayOfMonth()== entry.getKey().getDayOfMonth()){
-                    day.getStyleClass().add("day-selected");
-                    WindowControls.centerNodeInScrollPane(calendarScrollPane,day);
-
-                    List<Event> value = entry.getValue();
-                    circleProgress.setValue(0);
-                    circleProgress.setMinValue(0);
-                    circleProgress.setMaxValue(100);
-                    size = value.size();
-                    total = value.size();
-                    if (size == 0) {
-                        activeTask.setText("no tasks");
-                    } else if (size == 1) {
-                        activeTask.setText("1 task");
-                    } else {
-                        activeTask.setText(size + " tasks");
-                    }
-                    for (Event event : value) {
-                        VBox dayEvents = FXMLLoader.load(App.class.getResource("layouts/todo/listItem-todo.fxml"));
-                        DateTime currentDay = new DateTime(event.start.dateTime);
-                        String hours = String.format("%02d", currentDay.getHourOfDay());
-                        String minutes = String.format("%02d", currentDay.getMinuteOfHour());
-                        Text eventTime = (Text) dayEvents.getChildren().get(0);
-                        eventTime.setText(hours + ":" + minutes);
-                        HBox eventContainer = (HBox) dayEvents.getChildren().get(1);
-                        Text eventSubject = (Text) eventContainer.getChildren().get(1);
-                        JFXCheckBox selection = (JFXCheckBox) eventContainer.getChildren().get(0);
-                        selection.selectedProperty().addListener(d -> {
-                            if (selection.isSelected()) {
-                                size = size-1;
-                            }
-                            if (!selection.isSelected()) {
-                                size = size+1;
-                            }
-
-                            if (size == 0) {
-                                activeTask.setText("no tasks");
-                            } else if (size == 1) {
-                                activeTask.setText("1 task");
-                            } else {
-                                activeTask.setText(size + " tasks");
-                            }
-                            calculateChanges(size);
-                        });
-                        eventSubject.setText(event.subject);
-                        Platform.runLater(() ->
-                                SetupCalendarUI.eventsList.add(dayEvents));
-
-                    }
+                if (today.getDayOfMonth() == entry.getKey().getDayOfMonth()) {
+                    markActiveDay(entry, day);
                 }
                 dayNum.setText(date);
-
                 day.setOnMouseClicked(event -> {
                     Text dayReading = (Text) day.getChildren().get(0);
                     String s = dayReading.getText();
@@ -171,8 +124,6 @@ public class GetCalendar {
 
 
                 });
-
-
                 Platform.runLater(() -> SetupCalendarUI.calendarList.add(day));
                 for (Event e : entries) {
                     System.out.println(e.subject);
@@ -182,22 +133,65 @@ public class GetCalendar {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("-------------------------------------------------");
             }
-            Map.Entry<LocalDate, List<Event>> entry = CalendarDriver.daysContainingEvents.entrySet().iterator().next();
-            //  LocalDate key = entry.getKey();
-
-
-            System.out.println();
         }
+        WindowControls.centerNodeInScrollPane(calendarScrollPane, selectedDay);
 
+    }
+
+    private static void markActiveDay(Map.Entry<LocalDate, List<Event>> entry, VBox day) throws IOException {
+        day.getStyleClass().add("day-selected");
+        selectedDay = day;
+        List<Event> value = entry.getValue();
+        circleProgress.setValue(0);
+        circleProgress.setMinValue(0);
+        circleProgress.setMaxValue(100);
+        size = value.size();
+        total = value.size();
+        if (size == 0) {
+            activeTask.setText("no tasks");
+        } else if (size == 1) {
+            activeTask.setText("1 task");
+        } else {
+            activeTask.setText(size + " tasks");
+        }
+        for (Event event : value) {
+            VBox dayEvents = FXMLLoader.load(App.class.getResource("layouts/todo/listItem-todo.fxml"));
+            DateTime currentDay = new DateTime(event.start.dateTime);
+            String hours = String.format("%02d", currentDay.getHourOfDay());
+            String minutes = String.format("%02d", currentDay.getMinuteOfHour());
+            Text eventTime = (Text) dayEvents.getChildren().get(0);
+            eventTime.setText(hours + ":" + minutes);
+            HBox eventContainer = (HBox) dayEvents.getChildren().get(1);
+            Text eventSubject = (Text) eventContainer.getChildren().get(1);
+            JFXCheckBox selection = (JFXCheckBox) eventContainer.getChildren().get(0);
+            selection.selectedProperty().addListener(d -> {
+                if (selection.isSelected()) {
+                    size = size - 1;
+                }
+                if (!selection.isSelected()) {
+                    size = size + 1;
+                }
+
+                if (size == 0) {
+                    activeTask.setText("no tasks");
+                } else if (size == 1) {
+                    activeTask.setText("1 task");
+                } else {
+                    activeTask.setText(size + " tasks");
+                }
+                calculateChanges(size);
+            });
+            eventSubject.setText(event.subject);
+            Platform.runLater(() -> SetupCalendarUI.eventsList.add(dayEvents));
+        }
     }
 
     private static void calculateChanges(int size) {
         System.out.println(size + " size");
         System.out.println(total + " total");
-        float percentage = ((float) size/(float) total) * 100;
-        System.out.println("Percentage is "+ percentage);
+        float percentage = ((float) size / (float) total) * 100;
+        System.out.println("Percentage is " + percentage);
         float totalPercentage = 100;
         float finalValue = totalPercentage - percentage;
         System.out.println(finalValue + "%");

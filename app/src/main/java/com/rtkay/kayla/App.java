@@ -23,6 +23,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        System.setProperty("prism.lcdtext", "false");
         StackPane root = FXMLLoader.load(getClass().getResource("main.fxml"));
         Scene scene  = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("theme/fonts/selector.css").toExternalForm());
