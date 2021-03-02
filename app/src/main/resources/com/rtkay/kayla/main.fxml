@@ -20,6 +20,7 @@
 
 <?import com.rtkay.kayla.api.outlook.calendar.observer.clock.MyClock?>
 <?import com.rtkay.kayla.api.outlook.calendar.observer.days.MyCustomDate?>
+<?import javafx.scene.layout.AnchorPane?>
 <StackPane prefHeight="896" prefWidth="414" styleClass="window" stylesheets="@theme/styles.css"
            xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="com.rtkay.kayla.ui.StartupController">
@@ -67,17 +68,30 @@
                                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0"
                                               spacing="7.0" HBox.hgrow="ALWAYS">
                                             <children>
-                                                <MenuButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
-                                                            text="MenuButton">
-                                                    <items>
-                                                        <MenuItem mnemonicParsing="false" text="Action 1"/>
-                                                        <MenuItem mnemonicParsing="false" text="Action 2"/>
-                                                    </items>
-                                                    <graphic>
-                                                        <FontIcon iconLiteral="fltral-badge-24"
-                                                                  styleClass="toolbar-icons"/>
-                                                    </graphic>
-                                                </MenuButton>
+                                                <StackPane>
+                                                    <children>
+                                                        <MenuButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="menu-button-notif" text="MenuButton">
+                                                            <items>
+                                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                            </items>
+                                                            <graphic>
+                                                                <FontIcon iconLiteral="fltral-badge-24" styleClass="toolbar-icons" />
+                                                            </graphic>
+                                                        </MenuButton>
+                                                     <!--   <AnchorPane styleClass="notif-badge" StackPane.alignment="TOP_RIGHT">
+                                                            <children>
+                                                                <Text styleClass="notif-count" layoutX="2.0" layoutY="10.0" text="5" AnchorPane.bottomAnchor="-3.01171875" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="1.53125" AnchorPane.topAnchor="-2.94921875" />
+                                                            </children>
+                                                            <padding>
+                                                                <Insets right="10.0" />
+                                                            </padding>
+                                                            <StackPane.margin>
+                                                                <Insets right="13.0" top="5.0" />
+                                                            </StackPane.margin>
+                                                        </AnchorPane>-->
+                                                    </children>
+                                                </StackPane>
                                                 <Circle fill="#1f93ff00" radius="10.0" stroke="#29daa8"
                                                         strokeWidth="3.0"/>
                                             </children>

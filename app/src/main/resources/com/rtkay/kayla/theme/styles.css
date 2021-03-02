@@ -167,3 +167,28 @@
     /* top-left, top-right, bottom-right, and bottom-left corners, in that order. */
     -fx-border-color: white;
 }
+
+.menu-button-notif > .arrow-button {
+    -fx-padding: 0;
+}
+
+.menu-button-notif > .arrow-button > .arrow {
+    -fx-padding: 0;
+
+}
+
+.notif-badge {
+    -fx-min-height: 10;
+    -fx-max-height: -fx-min-height;
+    -fx-max-width: -fx-min-height;
+    -fx-min-width: -fx-min-height;
+    -fx-pref-width: -fx-min-height;
+    -fx-pref-height: -fx-min-height;
+    -fx-background-color: #EE519A;
+    -fx-background-radius: 200;
+}
+
+.notif-count{
+    -fx-fill: white;
+    -fx-font-size: 10;
+}
