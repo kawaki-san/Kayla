@@ -7,3 +7,4 @@ bin
 /.idea/
 /app/src/main/resources/com/rtkay/kayla/api.txt
 /app/src/main/resources/com/rtkay/kayla/api/calendar/oAuth.properties
+/app/src/main/resources/com/rtkay/kayla/api/reddit/credentials.properties

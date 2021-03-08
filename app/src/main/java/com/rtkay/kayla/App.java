@@ -3,6 +3,8 @@
  */
 package com.rtkay.kayla;
 
+import com.rtkay.kayla.api.reddit.oAuth.Credentials;
+import com.rtkay.kayla.api.reddit.oAuth.RedditOAuth;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -38,6 +40,9 @@ public class App extends Application {
             primaryStage.setY(e.getScreenY() + yOffset);
         });
         primaryStage.setScene(scene);
+        Credentials credentials = new Credentials();
+        RedditOAuth auth = new RedditOAuth();
+        auth.getOAuthToken(credentials);
         primaryStage.show();
     }
 }

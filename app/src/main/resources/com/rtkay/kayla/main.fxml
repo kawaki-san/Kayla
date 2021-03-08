@@ -131,7 +131,7 @@
                                                                               text="Wednesday">
                                                                     <styleClass>
                                                                         <String fx:value="date"/>
-                                                                        <String fx:value="light-text"/>
+                                                                        <String fx:value="regular-text"/>
                                                                     </styleClass>
                                                                 </MyCustomDate>
                                                                 <!--
@@ -148,7 +148,7 @@
                                                                                  text="13:44">
                                                                             <styleClass>
                                                                                 <String fx:value="date"/>
-                                                                                <String fx:value="light-text"/>
+                                                                                <String fx:value="regular-text"/>
                                                                             </styleClass>
                                                                         </MyClock>
                                                                         <!--
