@@ -70,26 +70,29 @@
                                             <children>
                                                 <StackPane>
                                                     <children>
-                                                        <MenuButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="menu-button-notif" text="MenuButton">
+                                                        <MenuButton contentDisplay="GRAPHIC_ONLY"
+                                                                    mnemonicParsing="false"
+                                                                    styleClass="menu-button-notif" text="MenuButton">
                                                             <items>
-                                                                <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                                <MenuItem mnemonicParsing="false" text="Action 1"/>
+                                                                <MenuItem mnemonicParsing="false" text="Action 2"/>
                                                             </items>
                                                             <graphic>
-                                                                <FontIcon iconLiteral="fltral-badge-24" styleClass="toolbar-icons" />
+                                                                <FontIcon iconLiteral="fltral-badge-24"
+                                                                          styleClass="toolbar-icons"/>
                                                             </graphic>
                                                         </MenuButton>
-                                                     <!--   <AnchorPane styleClass="notif-badge" StackPane.alignment="TOP_RIGHT">
-                                                            <children>
-                                                                <Text styleClass="notif-count" layoutX="2.0" layoutY="10.0" text="5" AnchorPane.bottomAnchor="-3.01171875" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="1.53125" AnchorPane.topAnchor="-2.94921875" />
-                                                            </children>
-                                                            <padding>
-                                                                <Insets right="10.0" />
-                                                            </padding>
-                                                            <StackPane.margin>
-                                                                <Insets right="13.0" top="5.0" />
-                                                            </StackPane.margin>
-                                                        </AnchorPane>-->
+                                                        <!--   <AnchorPane styleClass="notif-badge" StackPane.alignment="TOP_RIGHT">
+                                                               <children>
+                                                                   <Text styleClass="notif-count" layoutX="2.0" layoutY="10.0" text="5" AnchorPane.bottomAnchor="-3.01171875" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="1.53125" AnchorPane.topAnchor="-2.94921875" />
+                                                               </children>
+                                                               <padding>
+                                                                   <Insets right="10.0" />
+                                                               </padding>
+                                                               <StackPane.margin>
+                                                                   <Insets right="13.0" top="5.0" />
+                                                               </StackPane.margin>
+                                                           </AnchorPane>-->
                                                     </children>
                                                 </StackPane>
                                                 <Circle fill="#1f93ff00" radius="10.0" stroke="#29daa8"
@@ -124,8 +127,13 @@
                                                             <children>
 
                                                                 <MyCustomDate fx:id="txtCustomDate" strokeType="OUTSIDE"
-                                                                              strokeWidth="0.0" styleClass="date"
-                                                                              text="Wednesday"/>
+                                                                              strokeWidth="0.0"
+                                                                              text="Wednesday">
+                                                                    <styleClass>
+                                                                        <String fx:value="date"/>
+                                                                        <String fx:value="light-text"/>
+                                                                    </styleClass>
+                                                                </MyCustomDate>
                                                                 <!--
                                                                                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="Wednesday" /> -->
                                                             </children>
@@ -136,8 +144,13 @@
                                                                     <children>
 
                                                                         <MyClock fx:id="txtTime" strokeType="OUTSIDE"
-                                                                                 strokeWidth="0.0" styleClass="date"
-                                                                                 text="13:44"/>
+                                                                                 strokeWidth="0.0"
+                                                                                 text="13:44">
+                                                                            <styleClass>
+                                                                                <String fx:value="date"/>
+                                                                                <String fx:value="light-text"/>
+                                                                            </styleClass>
+                                                                        </MyClock>
                                                                         <!--
                                                                                                                               <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="13:44" /> -->
                                                                     </children>
